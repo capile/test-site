@@ -1,10 +1,10 @@
 /*! Tecnodesign */
 (function(){
-    if(!('_tdz' in window)) window._tdz = {};
+    var _toColor, _toT=0, _toL=0;
 
     function toggleBox()
     {
-        var el=Z.get('.box', this), i=el.length;
+        var el=Z.get('.box', this), i=(el) ?el.length :0;
         if(i==0) return false;
         while(i-- > 0) {
             if(el[i].className.search(/\binactive\b/)>-1) el[i].className = el[i].className.replace(/\s*\binactive\b/, '');
@@ -36,7 +36,13 @@
 
     function init()
     {
-        var h=Z.get('.heading'), hi=h.length;
+        if(!('Z' in window)) return setTimeout(init, 200);
+        _toColor = Z.get('*[data-color]');
+        if(_toColor.length>0) {
+            window.onscroll=topmostColor;
+            _toT = setTimeout(topmostColor, 1000);
+        }
+        var h=Z.get('.heading'), hi=(h) ?h.length :0;
         while(hi-- > 0) {
             if(toggleBox.call(h[hi])) Z.addEvent(h[hi], 'click', toggleBox);
         }
@@ -51,8 +57,6 @@
         delete(h);
         delete(hi);
     }
-
-    var _toColor = Z.get('*[data-color]'), _toT=0, _toL=0;
 
     function topmostColor()
     {
@@ -85,10 +89,5 @@
         r=null;
     }
 
-    if(_toColor.length>0) {
-        window.onscroll=topmostColor;
-        _toT = setTimeout(topmostColor, 1000);
-    }
-
-    Z.ready(init);
+    init();    
 })();

@@ -551,8 +551,6 @@ table {
     background: -o-linear-gradient(top,  @color1 0%,@color2 100%);
     background: -ms-linear-gradient(top,  @color1 0%, @color2 100%);
     background: linear-gradient(to bottom,  @color1 0%, @color2 100%);
-    /*-pie-background: linear-gradient(@color1, @color2);*/
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@{color1h}', endColorstr='@{color2h}',GradientType=0 );
 }
 .gradient(@color1, @color2, @noie) {
     background: -moz-linear-gradient(top,  @color1 0%, @color2 100%);
@@ -561,8 +559,6 @@ table {
     background: -o-linear-gradient(top,  @color1 0%,@color2 100%);
     background: -ms-linear-gradient(top,  @color1 0%, @color2 100%);
     background: linear-gradient(to bottom,  @color1 0%, @color2 100%);
-    -pie-background: linear-gradient(@color1, @color2);
-    behavior: url(/_assets/js/PIE.htc);
 }
 .background-alpha(@color, @alpha: 0.5)
 {
@@ -570,8 +566,6 @@ table {
     background:@color;
     background:transparent;
     background: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='@{color}@{alphah}', endColorstr='@{color}@{alphah}');
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@{color}@{alphah}, endColorstr=@{color}@{alphah})";
 }
 
 .opacity(@alpha)
@@ -614,19 +608,19 @@ table {
 }
 
 .keyframes(@name, @from, @to) {
-    @-webkit-keyframes @{name} {
+    @-webkit-keyframes "@{name}" {
         from { -webkit-transform: @from;}
         to   { -webkit-transform: @to;}
     }
-    @-moz-keyframes @{name} {
+    @-moz-keyframes "@{name}" {
         from { -moz-transform: @from; }
         to   { -moz-transform: @to; }
     }
-    @-o-keyframes @{name} {
+    @-o-keyframes "@{name}" {
         from { -o-transform: @from; }
         to   { -o-transform: @to; }
     }
-    @keyframes @{name} {
+    @keyframes "@{name}" {
         from { transform: @from; }
         to   { transform: @to; }
     }
@@ -638,5 +632,4 @@ table {
 -webkit-border-radius: @arguments;
    -moz-border-radius: @arguments;
         border-radius: @arguments;
-            behavior: url(/_/js/PIE.htc);
 }

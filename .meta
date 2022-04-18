@@ -1,0 +1,5 @@
+---
+script:
+  site: [ /_/js/site.js ]
+style: 
+  site: [ /_/css/site.less ]
